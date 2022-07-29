@@ -1,80 +1,18 @@
-# 리액트 프로젝트 scaffolding
+# 리액트 storybook/react-test
 
-리액트 기반 플젝 베이스 제공
+storybook/testing-react 연습
 
-- 주요환경
-  - webpack5.x
-  - react18.x
-  - typescript
-  - svgr
-  - storybook
-  - scss
-  - style-component
-  - jest
-  - axios
-  - style-lint
-  - eslint
-  - prettier
+기존 jest사용 시 없던 빌드 에러가 발생
 
-## webpack 주요 설정 정리
+> ( jest 버전 이라기엔 stack-overflow에 과거 부터 있던 문제였음 )
 
-**eslint&prettier**
+## jest설정에 transform옵션 추가
 
-- yarn add -D eslint-config-prettier eslint-plugin-pretier
-  - config-prettier : ESLint의 formatting 관련 설정 중 Prettier와 충돌하는 부분 비활성화.
-  - plugin-prettier : Prettier에서 인식하는 코드상의 포맷 오류를 ESLint 오류로 출력
-- yarn add -D eslint-plugin-react eslint-plugin-react-hooks
+- tsx?파일에 ts-jest 처리 적용
+- jsx?파일에 babel-jest 처리 적용
+- scss파일에 jest-scss-transform 처리 적용
 
-**react-fast-refresh**
+## ETC
 
-- yarn add -D @pmmmwh/react-refresh-webpack-plugin react-refresh
-- yarn add -D type-fest
-  - typescript프로젝트일 경우 설치
-
-<details>
-<summary>webpack 적용 예시( wepback-dev-server )</summary>
-
-```js
-const isDevelopment = process.env.NODE_ENV !== 'production';
-
-module.exports = {
-  mode: isDevelopment ? 'development' : 'production',
-  devServer: {
-    hot: true
-  }
-};
-```
-
-</details>
-
-<details>
-<summary>babel-loader 설정</summary>
-
-```js
-const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
-
-const isDevelopment = process.env.NODE_ENV !== 'production';
-
-module.exports = {
-  mode: isDevelopment ? 'development' : 'production',
-  module: {
-    rules: [
-      {
-        test: /\.[jt]sx?$/,
-        exclude: /node_modules/,
-        use: [
-          {
-            loader: require.resolve('babel-loader'),
-            options: {
-              plugins: [isDevelopment && require.resolve('react-refresh/babel')].filter(Boolean)
-            }
-          }
-        ]
-      }
-    ]
-  },
-  plugins: [isDevelopment && new ReactRefreshWebpackPlugin()].filter(Boolean)
-};
-```
-
-</details>
+- 이전에 경험한 적 없던 에러가 jest 패키지 업데이트와 함께 발생함..
+- 명확한 원인을 알아봐야 겠음.
