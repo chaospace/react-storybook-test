@@ -13,8 +13,7 @@
     "serve": "webpack server --mode development --config ./webpack/webpack.config.js",
     "test": "jest --watch",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
-    "chromatic": "npx chromatic --project-token=e408208b0477"
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "axios": "^0.27.2",
