@@ -17,7 +17,6 @@ export default {
 
 const Template = (args: ButtonProps) => {
   const {children, ...rest} = args;
-  console.log('childern', children);
   return <Button {...rest}>{children}</Button>;
 };
 
@@ -29,7 +28,9 @@ Default.args = {
 export const BoldButton: ComponentStory<typeof Button> = Template.bind({});
 BoldButton.args = {
   children: '볼드 라벨',
-  bold: true
+  bold: true,
+  color: 'white',
+  bgColor: 'orange'
 };
 
 Default.play = async ({args, canvasElement}) => {
