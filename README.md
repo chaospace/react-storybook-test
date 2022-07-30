@@ -1,6 +1,4 @@
-# 리액트 storybook/react-test
-
-storybook/testing-react 연습
+# storybook을 이용한 컴포넌트 테스트 환경 구성 학습
 
 기존 jest사용 시 없던 빌드 에러가 발생
 
