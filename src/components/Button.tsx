@@ -1,31 +1,31 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonStyleProps {
   color?: string;
   bold?: boolean;
+  bgColor?: string;
 }
 
-const ButtonBase = styled.button`
+export interface ButtonProps
+  extends ButtonStyleProps,
+    React.ButtonHTMLAttributes<HTMLButtonElement> {}
+
+const ButtonBase = styled.button<ButtonStyleProps>`
   border: none;
   border-radius: 8px;
   padding: 8px 16px;
-  background-color: orange;
-  color: white;
+  color: ${({color}) => color ?? 'white'};
+  font-weight: ${({bold}) => (bold ? 'bold' : 'normal')};
   outline: none;
   text-align: center;
+  background-color: ${({bgColor}) => bgColor ?? 'orange'};
 `;
 
 function Button(props: React.PropsWithChildren<ButtonProps>) {
-  const {children, color, bold, ...rest} = props;
+  const {children, color, bold, bgColor, ...rest} = props;
   return (
-    <ButtonBase
-      {...rest}
-      style={{
-        color: color,
-        fontWeight: bold ? 'bold' : 'normal'
-      }}
-    >
+    <ButtonBase {...rest} color={color} bold={bold} bgColor={bgColor}>
       {children}
     </ButtonBase>
   );
