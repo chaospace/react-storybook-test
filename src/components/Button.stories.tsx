@@ -1,8 +1,8 @@
 import React from 'react';
 import {ComponentMeta, ComponentStory} from '@storybook/react';
 import Button, {ButtonProps} from './Button';
-import {expect} from '@storybook/jest';
-import {userEvent, waitFor, within} from '@storybook/testing-library';
+// import {expect} from '@storybook/jest';
+// import {userEvent, waitFor, within} from '@storybook/testing-library';
 import ButtonDoc from './Button.mdx';
 // 기본포맷 선언
 export default {
@@ -10,13 +10,7 @@ export default {
   component: Button,
   parameters: {
     docs: {
-      page: () => {
-        return (
-          <div>
-            <ButtonDoc />
-          </div>
-        );
-      }
+      page: ButtonDoc
     }
   },
   argTypes: {
