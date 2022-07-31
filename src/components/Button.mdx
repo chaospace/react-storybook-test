@@ -1,15 +1,21 @@
-import {Story} from '@storybook/addon-docs/blocks';
+import {Story, Meta} from '@storybook/addon-docs';
+import Button from './Button';
+
+<Meta title="Button" component={Button} />
 
 # Button
 
-## 버튼에 컴포넌트에 대한 설명
+- 기본 Button속성을 모두 제공하며, 추가 편의 속성을 통해 스타일을 제어한다.
+- 현재 제공되는 속성은 color, bgColor, bold, stroke등이 있다.
+
+## 기본
 
 <Story id="button--default" />
 
-## 볼드 버튼
+## 볼드
 
 <Story id="button--bold-button" />
 
-## 스트로크 버튼
+## 스트로크
 
 <Story id="button--storke-button" />

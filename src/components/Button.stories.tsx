@@ -9,6 +9,8 @@ export default {
   title: 'Button',
   component: Button,
   parameters: {
+    componentSubtitle: '버튼 컴포넌트 서브 타이틀!',
+    // docs page설정을 mdx로 설정하면 markdown을 이용한 문서 작성 가능
     docs: {
       page: ButtonDoc
     }
@@ -26,6 +28,11 @@ const Template = (args: ButtonProps) => {
 };
 
 export const Default: ComponentStory<typeof Button> = Template.bind({});
+Default.parameters = {
+  docs: {
+    storyDescription: '기본 버튼 스타일'
+  }
+};
 Default.args = {
   children: '버튼 라벨!'
 };
@@ -38,10 +45,21 @@ BoldButton.args = {
   bgColor: 'orange'
 };
 
+BoldButton.parameters = {
+  docs: {
+    storyDescription: '라벨 볼드 버튼 스타일'
+  }
+};
+
 export const StorkeButton: ComponentStory<typeof Button> = Template.bind({});
 StorkeButton.args = {
   children: '스트로크 버튼',
   stroke: true
+};
+StorkeButton.parameters = {
+  docs: {
+    storyDescription: 'stroke 버튼 스타일'
+  }
 };
 
 // Default.play = async ({args, canvasElement}) => {

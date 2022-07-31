@@ -24,6 +24,11 @@ const ButtonBase = styled.button<ButtonStyleProps>`
   background-color: ${({bgColor}) => bgColor ?? 'orange'};
 `;
 
+/**
+ * 버튼 컴포넌트 기본 설명
+ * @param props
+ * @returns
+ */
 function Button(props: React.PropsWithChildren<ButtonProps>) {
   const {children, stroke, color, bold, bgColor, ...rest} = props;
   return (
