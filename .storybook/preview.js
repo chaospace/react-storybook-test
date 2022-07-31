@@ -3,7 +3,7 @@ import '@/assets/styles/index.scss';
 
 const parameters = {
   actions: {argTypesRegex: '^on[A-Z].*'},
-  layout: 'none',
+  layout: 'padded',
   controls: {
     matchers: {
       color: /(background|color)$/i,
