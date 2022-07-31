@@ -44,16 +44,22 @@ BoldButton.args = {
   bgColor: 'orange'
 };
 
-Default.play = async ({args, canvasElement}) => {
-  const canvas = within(canvasElement);
-
-  const button = canvas.queryByRole('button');
-  await waitFor(() => {
-    expect(button).toBeInTheDocument();
-  });
-
-  button && userEvent.click(button);
-  await waitFor(() => {
-    expect(args.onClick).toHaveBeenCalled();
-  });
+export const StorkeButton: ComponentStory<typeof Button> = Template.bind({});
+StorkeButton.args = {
+  children: '스트로크 버튼',
+  stroke: true
 };
+
+// Default.play = async ({args, canvasElement}) => {
+//   const canvas = within(canvasElement);
+
+//   const button = canvas.queryByRole('button');
+//   await waitFor(() => {
+//     expect(button).toBeInTheDocument();
+//   });
+
+//   button && userEvent.click(button);
+//   await waitFor(() => {
+//     expect(args.onClick).toHaveBeenCalled();
+//   });
+// };
