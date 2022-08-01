@@ -1,5 +1,6 @@
 //@ts-nocheck
-import '@/assets/styles/index.scss';
+import GlobalStyle from '@/globalStyle';
+import {Fragment} from 'react';
 
 const parameters = {
   actions: {argTypesRegex: '^on[A-Z].*'},
@@ -14,9 +15,12 @@ const parameters = {
 
 const decorators = [
   Story => (
-    <div style={{margin: '3em'}}>
-      <Story />
-    </div>
+    <Fragment>
+      <GlobalStyle />
+      <div style={{margin: '3em'}}>
+        <Story />
+      </div>
+    </Fragment>
   )
 ];
 
