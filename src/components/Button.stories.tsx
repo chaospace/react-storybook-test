@@ -1,8 +1,6 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 import {ComponentMeta, ComponentStory} from '@storybook/react';
 import Button, {ButtonProps} from './Button';
-// import {expect} from '@storybook/jest';
-// import {userEvent, waitFor, within} from '@storybook/testing-library';
 import ButtonDoc from './Button.mdx';
 // 기본포맷 선언
 export default {
@@ -24,11 +22,11 @@ export default {
 
 const Template = (args: ButtonProps) => {
   const {children, ...rest} = args;
-  console.log('args', args);
   return <Button {...rest}>{children}</Button>;
 };
 
 const Default: ComponentStory<typeof Button> = Template.bind({});
+Default.storyName = '기본버튼';
 Default.parameters = {
   docs: {
     storyDescription: '기본 버튼 스타일'
@@ -47,13 +45,8 @@ const BoldButton: ComponentStory<typeof Button> = Template.bind(
     bgColor: '0xff00ff'
   }
 );
-// BoldButton.args = {
-//   children: '볼드 라벨',
-//   bold: true,
-//   color: 'while',
-//   bgColor: '0xff00ff'
-// };
 
+BoldButton.storyName = '라벨볼드';
 BoldButton.parameters = {
   docs: {
     storyDescription: '라벨 볼드 버튼 스타일'
@@ -61,6 +54,7 @@ BoldButton.parameters = {
 };
 
 const StrokeButton: ComponentStory<typeof Button> = Template.bind({});
+StrokeButton.storyName = '보더버튼';
 StrokeButton.args = {
   children: '스트로크 버튼',
   border: true
@@ -91,7 +85,7 @@ const ButtonWrapper = () => {
     </div>
   );
 };
-ButtonWrapper.storyName = 'all buttons';
+ButtonWrapper.storyName = '버튼 스타일 예시';
 ButtonWrapper.parameters = {
   controls: {disable: true}
 };
