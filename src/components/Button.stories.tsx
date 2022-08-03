@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import {ComponentMeta, ComponentStory} from '@storybook/react';
 import Button, {ButtonProps} from './Button';
 // import {expect} from '@storybook/jest';
@@ -24,10 +24,11 @@ export default {
 
 const Template = (args: ButtonProps) => {
   const {children, ...rest} = args;
+  console.log('args', args);
   return <Button {...rest}>{children}</Button>;
 };
 
-export const Default: ComponentStory<typeof Button> = Template.bind({});
+const Default: ComponentStory<typeof Button> = Template.bind({});
 Default.parameters = {
   docs: {
     storyDescription: '기본 버튼 스타일'
@@ -37,13 +38,21 @@ Default.args = {
   children: '버튼 라벨!'
 };
 
-export const BoldButton: ComponentStory<typeof Button> = Template.bind({});
-BoldButton.args = {
-  children: '볼드 라벨',
-  bold: true,
-  color: 'white',
-  bgColor: 'orange'
-};
+const BoldButton: ComponentStory<typeof Button> = Template.bind(
+  {},
+  {
+    children: '볼드 라벨',
+    bold: true,
+    color: 'while',
+    bgColor: '0xff00ff'
+  }
+);
+// BoldButton.args = {
+//   children: '볼드 라벨',
+//   bold: true,
+//   color: 'while',
+//   bgColor: '0xff00ff'
+// };
 
 BoldButton.parameters = {
   docs: {
@@ -51,27 +60,39 @@ BoldButton.parameters = {
   }
 };
 
-export const StorkeButton: ComponentStory<typeof Button> = Template.bind({});
-StorkeButton.args = {
+const StrokeButton: ComponentStory<typeof Button> = Template.bind({});
+StrokeButton.args = {
   children: '스트로크 버튼',
-  stroke: true
+  border: true
 };
-StorkeButton.parameters = {
+StrokeButton.parameters = {
   docs: {
     storyDescription: 'stroke 버튼 스타일'
   }
 };
 
-// Default.play = async ({args, canvasElement}) => {
-//   const canvas = within(canvasElement);
-
-//   const button = canvas.queryByRole('button');
-//   await waitFor(() => {
-//     expect(button).toBeInTheDocument();
-//   });
-
-//   button && userEvent.click(button);
-//   await waitFor(() => {
-//     expect(args.onClick).toHaveBeenCalled();
-//   });
-// };
+const ButtonWrapper = () => {
+  const Other = Template.bind({}, {children: '링크버튼', color: '#ff00ee', bgColor: '#aa0000'});
+  const Bold = Template.bind({}, {children: '버튼기본', bold: true, bgColor: '#000000'});
+  const Normal = Template.bind({}, {children: '버튼기본'});
+  const Border = Template.bind({}, {children: '버튼보더', bold: true, border: true});
+  return (
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'row',
+        gap: '8px'
+      }}
+    >
+      <Normal />
+      <Bold />
+      <Other />
+      <Border />
+    </div>
+  );
+};
+ButtonWrapper.storyName = 'all buttons';
+ButtonWrapper.parameters = {
+  controls: {disable: true}
+};
+export {ButtonWrapper, Default, BoldButton, StrokeButton};
