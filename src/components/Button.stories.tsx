@@ -1,13 +1,24 @@
 import React from 'react';
 import {ComponentMeta, ComponentStory} from '@storybook/react';
 import Button, {ButtonProps} from './Button';
-import {expect, jest} from '@storybook/jest';
+import {expect} from '@storybook/jest';
 import {userEvent, waitFor, within} from '@storybook/testing-library';
-
+import ButtonDoc from './Button.mdx';
 // 기본포맷 선언
 export default {
   title: 'Button',
   component: Button,
+  parameters: {
+    docs: {
+      page: () => {
+        return (
+          <div>
+            <ButtonDoc />
+          </div>
+        );
+      }
+    }
+  },
   argTypes: {
     onClick: {
       action: true
