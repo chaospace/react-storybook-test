@@ -2,6 +2,7 @@ import React from 'react';
 import {ComponentMeta, ComponentStory} from '@storybook/react';
 import Button, {ButtonProps} from './Button';
 import ButtonDoc from './Button.mdx';
+import styled from 'styled-components';
 // 기본포맷 선언
 export default {
   title: 'Button',
@@ -65,28 +66,57 @@ StrokeButton.parameters = {
   }
 };
 
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+`;
+
+const ThemeButtons = () => {
+  const Primary = Template.bind({}, {children: '링크버튼', variant: 'primary'});
+  const Secondary = Template.bind({}, {children: '버튼기본'});
+  const Success = Template.bind({}, {children: '버튼기본', variant: 'success'});
+  const Info = Template.bind({}, {children: '버튼보더', variant: 'info'});
+  const Warning = Template.bind({}, {children: '버튼보더', variant: 'warning'});
+  const Danger = Template.bind({}, {children: '버튼보더', variant: 'danger'});
+
+  return (
+    <Wrapper>
+      <Primary />
+      <Secondary />
+      <Success />
+      <Info />
+      <Warning />
+      <Danger />
+    </Wrapper>
+  );
+};
+
+ThemeButtons.storyName = '버튼 테마 예시';
+ThemeButtons.parameters = {
+  controls: {disable: true}
+};
+
 const ButtonWrapper = () => {
-  const Other = Template.bind({}, {children: '링크버튼', color: '#ff00ee', bgColor: '#aa0000'});
-  const Bold = Template.bind({}, {children: '버튼기본', bold: true, bgColor: '#000000'});
-  const Normal = Template.bind({}, {children: '버튼기본'});
+  const Other = Template.bind({}, {children: '링크버튼', color: '#ff00ee'});
+  const Normal = Template.bind({}, {children: '버튼기본', bgColor: '#ffcc00'});
+  const Bold = Template.bind(
+    {},
+    {children: '버튼기본', bold: true, color: '#ff0000', bgColor: '#0022ff'}
+  );
   const Border = Template.bind({}, {children: '버튼보더', bold: true, border: true});
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'row',
-        gap: '8px'
-      }}
-    >
+    <Wrapper>
       <Normal />
       <Bold />
       <Other />
       <Border />
-    </div>
+    </Wrapper>
   );
 };
 ButtonWrapper.storyName = '버튼 스타일 예시';
 ButtonWrapper.parameters = {
   controls: {disable: true}
 };
-export {ButtonWrapper, Default, BoldButton, StrokeButton};
+
+export {ThemeButtons, ButtonWrapper, Default, BoldButton, StrokeButton};
