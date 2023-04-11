@@ -1,0 +1,30 @@
+import {Canvas, Story, Meta, ArgsTable} from '@storybook/addon-docs';
+import Button from './Button';
+
+<Meta title="Button" component={Button} />
+
+# Button  
+- 기본 Button속성을 모두 제공하며, 추가 편의 속성을 통해 스타일을 제어한다.
+- 현재 제공되는 속성은 color, bgColor, bold, border등이 있다.  
+<br/>
+## 주요 속성
+
+- 현재 v1.0에서는 버튼 주요 속성만 제공한다.
+
+<ArgsTable of={Button} />
+
+## 컬러별 디자인
+
+<Story id="button--button-wrapper" />
+
+## 기본
+
+<Story id="button--default" />
+
+## 볼드
+
+<Story id="button--bold-button" />
+
+## 스트로크
+
+<Story id="button--stroke-button" />

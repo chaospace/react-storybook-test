@@ -16,7 +16,8 @@ const config = {
   transform: {
     '^.+\\.tsx?$': 'ts-jest',
     '^.+\\.jsx?$': 'babel-jest',
-    '^.+\\.scss$': '<rootDir>/node_modules/jest-scss-transform'
+    '^.+\\.scss$': '<rootDir>/node_modules/jest-scss-transform',
+    '^.+\\.mdx$': '@storybook/addon-docs/jest-transform-mdx'
   },
   // 파일 경로가 패턴 중 하나와 일치하면 적용 범위 정보를 건너뜁
   moduleNameMapper: {

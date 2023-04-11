@@ -2,10 +2,6 @@ const {nodeModules, sourcePath} = require('../webpack/const');
 
 module.exports = {
   webpackFinal: async (config, {configType}) => {
-    // `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'
-    // You can change the configuration based on that.
-    // 'PRODUCTION' is used when building the static version of storybook.
-    // Make whatever fine-grained changes you need
     config.resolve.alias = {
       ...config.resolve.alias,
       ...{
@@ -52,7 +48,7 @@ module.exports = {
   framework: '@storybook/react',
   staticDirs: ['../public'],
   features: {
-    babelModeV7: true
+    previewMdx2: true
   },
   core: {
     builder: 'webpack5'
